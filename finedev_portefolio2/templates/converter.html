@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="section converter-section">
+    <div class="container">
+        <h1 class="section-title">FineConvert - Convertisseur de bases numériques</h1>
+        
+        <div class="converter-container animate-up">
+            <div class="converter-form">
+                <div class="form-group">
+                    <label for="number">Nombre à convertir:</label>
+                    <input type="text" id="number" placeholder="Entrez un nombre">
+                </div>
+                
+                <div class="form-group">
+                    <label for="from_base">De la base:</label>
+                    <select id="from_base">
+                        <option value="2">Binaire (2)</option>
+                        <option value="8">Octal (8)</option>
+                        <option value="10" selected>Décimal (10)</option>
+                        <option value="16">Hexadécimal (16)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="to_base">Vers la base:</label>
+                    <select id="to_base">
+                        <option value="2">Binaire (2)</option>
+                        <option value="8">Octal (8)</option>
+                        <option value="10">Décimal (10)</option>
+                        <option value="16" selected>Hexadécimal (16)</option>
+                    </select>
+                </div>
+                
+                <button id="convert-btn" class="btn">Convertir</button>
+            </div>
+            
+            <div class="converter-result">
+                <h3>Résultat:</h3>
+                <div id="result" class="result-box">
+                    <p>Le résultat apparaîtra ici...</p>
+                </div>
+                <div id="error" class="error-box"></div>
+            </div>
+        </div>
+        
+        <div class="converter-info animate-up">
+            <h3>Comment utiliser FineConvert?</h3>
+            <p>1. Entrez le nombre que vous souhaitez convertir</p>
+            <p>2. Sélectionnez la base d'origine du nombre (binaire, octal, décimal ou hexadécimal)</p>
+            <p>3. Sélectionnez la base vers laquelle vous voulez convertir</p>
+            <p>4. Cliquez sur "Convertir" pour obtenir le résultat</p>
+            
+            <div class="examples">
+                <h4>Exemples:</h4>
+                <ul>
+                    <li>Binaire "1010" vers décimal → "10"</li>
+                    <li>Décimal "255" vers hexadécimal → "FF"</li>
+                    <li>Hexadécimal "A1" vers octal → "241"</li>
+                </ul>
+            </div>
+        </div>
+        
+        <a href="{{ url_for('index') }}" class="btn back-btn">Retour au portfolio</a>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const convertBtn = document.getElementById('convert-btn');
+    const numberInput = document.getElementById('number');
+    const fromBaseSelect = document.getElementById('from_base');
+    const toBaseSelect = document.getElementById('to_base');
+    const resultDiv = document.getElementById('result');
+    const errorDiv = document.getElementById('error');
+    
+    convertBtn.addEventListener('click', function() {
+        const number = numberInput.value.trim();
+        const fromBase = fromBaseSelect.value;
+        const toBase = toBaseSelect.value;
+        
+        if (!number) {
+            showError("Veuillez entrer un nombre à convertir");
+            return;
+        }
+        
+        fetch('/convert', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `number=${encodeURIComponent(number)}&from_base=${encodeURIComponent(fromBase)}&to_base=${encodeURIComponent(toBase)}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                showError(data.error);
+            } else {
+                showResult(data.result);
+            }
+        })
+        .catch(error => {
+            showError("Une erreur s'est produite lors de la conversion");
+        });
+    });
+    
+    function showResult(result) {
+        errorDiv.textContent = '';
+        errorDiv.style.display = 'none';
+        
+        resultDiv.innerHTML = `
+            <p><strong>Nombre original:</strong> ${numberInput.value}<sub>${fromBaseSelect.value}</sub></p>
+            <p><strong>Résultat:</strong> ${result}<sub>${toBaseSelect.value}</sub></p>
+        `;
+        resultDiv.style.display = 'block';
+    }
+    
+    function showError(message) {
+        resultDiv.style.display = 'none';
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+    }
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Section Accueil -->
+<section id="home" class="section home-section">
+    <div class="container">
+        <div class="home-content">
+            <div class="home-text animate-left">
+                <h2>Hey, je suis <span class="highlight" id="animated-name"></span><span id="cursor"></span></h2>
+                <h3>Développeur Full Stack</h3>
+                <p>Je crée des solutions web modernes et performantes avec des technologies à la pointe.</p>
+                <div class="btn-container">
+                    <a href="#contact" class="btn">Me contacter</a>
+                    <a href="{{ url_for('static', filename='cv.pdf') }}" download class="btn btn-secondary">Télécharger mon CV</a>
+                </div>
+            </div>
+            <div class="home-image animate-right">
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}"
+                     alt="Photo de profil"
+                     onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/default.jpg') }}'">
+            </div>
+        </div>
+    </div>
+</section><br>
+
+<!-- Section Projets -->
+<section id="projects" class="section projects-section">
+    <div class="container">
+        <h2 class="section-title">Mes Projets</h2>
+        <div class="projects-grid">
+            <!-- Projet 1 -->
+            <div class="project-card animate-up">
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='images/projects/ecommerce.jpg') }}"
+                         alt="Site E-commerce"
+                         loading="lazy">
+                </div>
+                <div class="project-info">
+                    <h3>Site E-commerce</h3>
+                    <p>Un site e-commerce complet avec panier et paiement</p>
+                    <div class="technologies">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="project-card animate-up delay-1">
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='images/projects/finetrainee.png') }}"
+                         alt="gestion des stagiaires"
+                         loading="lazy">
+                </div>
+                <div class="project-info">
+                    <h3>FineTrainee</h3>
+                    <p>Application de gestion des Stagiaires optimisée</p>
+                    <div class="technologies">
+                        <span class="tech-tag">HTML5 et CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">PHP</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="project-card animate-up delay-2">
+                <div class="project-image">
+                    <img src="{{ url_for('static', filename='images/projects/portfolio.png') }}"
+                         alt="Portfolio personnel"
+                         loading="lazy">
+                </div>
+                <div class="project-info">
+                    <h3>Portfolio personnel</h3>
+                    <p>Un portfolio responsive moderne</p>
+                    <div class="technologies">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Python/Flask</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Compétences -->
+<section id="skills" class="section skills-section">
+    <div class="container">
+        <h2 class="section-title">Mes Compétences</h2>
+        <div class="skills-container">
+            <div class="skills-category animate-left">
+                <h3>Frontend</h3>
+                <div class="skill">
+                    <span class="skill-name">HTML/CSS</span>
+                    <div class="skill-bar">
+                        <div class="skill-level level-90"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">JavaScript</span>
+                    <div class="skill-bar">
+                        <div class="skill-level level-85"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3>Backend</h3>
+                <div class="skill">
+                    <span class="skill-name">Python/Flask</span>
+                    <div class="skill-bar">
+                        <div class="skill-level level-85"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">PHP</span>
+                    <div class="skill-bar">
+                        <div class="skill-level level-75"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">MySQL</span>
+                    <div class="skill-bar">
+                        <div class="skill-level level-80"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category animate-right">
+                <h3>Outils</h3>
+                <div class="skill">
+                    <span class="skill-name">Photoshop</span>
+                    <div class="skill-bar">
+                        <div class="skill-level level-80"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">Figma</span>
+                    <div class="skill-bar">
+                        <div class="skill-level level-70"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <span class="skill-name">Illustrator</span>
+                    <div class="skill-bar">
+                        <div class="skill-level level-65"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Expérience -->
+<section id="experience" class="section experience-section">
+    <div class="container">
+        <h2 class="section-title">Expérience Professionnelle</h2>
+        <div class="timeline">
+            <div class="timeline-item animate-up">
+                <div class="timeline-date">2023 - Présent</div>
+                <div class="timeline-content">
+                    <h3>Développeur Full Stack</h3>
+                    <h4>Entreprise REZO, Douala</h4>
+                    <ul>
+                        <li>Développement d'applications web avec PHP et JavaScript</li>
+                        <li>Conception et gestion de bases de données MySQL</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item animate-up delay-1">
+                <div class="timeline-date">2024</div>
+                <div class="timeline-content">
+                    <h3>Stagiaire Développeur</h3>
+                    <h4>REZO</h4>
+                    <ul>
+                        <li>Participation au développement d'une plateforme e-commerce</li>
+                        <li>Création de composants PHP réutilisables</li>
+                        <li>Tests unitaires et d'intégration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section À propos -->
+<section id="about" class="section about-section">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-image animate-left">
+                <img src="{{ url_for('static', filename='images/about.jpg') }}"
+                     alt="À propos"
+                     loading="lazy">
+            </div>
+            <div class="about-text animate-right">
+                <h2 class="section-title">À propos de moi</h2>
+                <p>Passionné par le développement web depuis mon plus jeune âge, j'ai acquis au fil des années une expertise solide dans la création d'applications web performantes et ergonomiques.</p>
+                <p>Etudiant en Génie logiciel à l'institut Universitaire du Golfe de guinée, j'ai travaillé sur divers projets allant de simples sites vitrines à des applications web complexes avec des milliers d'utilisateurs.</p>
+                <p>En dehors du code, j'aime partager mes connaissances à travers des articles techniques.</p>
+                <div class="personal-info">
+                    <div class="info-item">
+                        <span class="info-label">Âge:</span>
+                        <span class="info-value">24 ans</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">clovisfinka01@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Téléphone:</span>
+                        <span class="info-value">+237 682 330 402</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Contact -->
+<section id="contact" class="section contact-section">
+    <div class="container">
+        <h2 class="section-title">Contactez-moi</h2>
+        <div class="contact-container">
+            <div class="contact-info animate-left">
+                <h3>Informations de contact</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>clovisfinka01@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+237 682 330 402</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Douala, Cameroun</span>
+                </div>
+                <div class="social-media">
+    <a href="https://www.facebook.com/profile.php?id=61564458006249&name=xhp_nt_fb_action_open_user" 
+        target="_blank" 
+        rel="noopener noreferrer nofollow"
+        aria-label="Suivez-moi sur Facebook (nouvelle fenêtre)"
+        title="Page Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.youtube.com/@faradaycodes-l4u" 
+            target="_blank" 
+            rel="noopener noreferrer nofollow"
+            aria-label="Abonnez-vous sur YouTube (nouvelle fenêtre)"
+            title="Chaîne YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://x.com/clovisfinka" 
+            target="_blank" 
+            rel="noopener noreferrer nofollow"
+            aria-label="Suivez-moi sur X/Twitter (nouvelle fenêtre)"
+            title="Compte X">
+            <i class="fab fa-twitter"></i> 
+        </a>
+                </div>
+            </div>
+
+            <div class="contact-form animate-right">
+                <form id="contactForm" action="{{ url_for('submit_contact') }}" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Votre email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
+                    </div>
+
+                    <div class="flash-messages">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+
+                    <button type="submit" class="btn">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
